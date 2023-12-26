@@ -4,7 +4,7 @@ import '../App.css'
 export default function Quote() {
     return (
         <div>
-            <div className="card my-5">
+            <div className="card quote my-5">
                 <div className="card-header">
                     Quote
                 </div>
