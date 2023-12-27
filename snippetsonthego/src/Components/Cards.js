@@ -5,8 +5,8 @@ import '../App.css'
 export default function Cards() {
     return (
         <div>
-            <div className="row row-cols-auto">
-                <div className="card news col">
+            <div className="row row-cols-auto justify-content-center container-fluid">
+                <div className="card col-sm-3 mx-2">
                     <img src={logo} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">Card title</h5>
@@ -14,7 +14,7 @@ export default function Cards() {
                         <a href="#" className="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
-                <div className="card news col">
+                <div className="card col-sm-3 mx-4">
                     <img src={logo} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">Card title</h5>
@@ -22,7 +22,7 @@ export default function Cards() {
                         <a href="#" className="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
-                <div className="card news col">
+                <div className="card col-sm-3 mx-2">
                     <img src={logo} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">Card title</h5>
