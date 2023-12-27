@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css'
-var fetchurl = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyD50GAaCSUSyNN8pqFMVRbwct4pQo9GLp8&channelId=UC16niRr50-MSBwiO3YDb3RA&part=snippet,id&order=date&maxResults=21';
+var fetchurl = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyD50GAaCSUSyNN8pqFMVRbwct4pQo9GLp8&channelId=UC16niRr50-MSBwiO3YDb3RA&part=snippet,id&order=date&maxResults=6';
 
 export default function Cards() {
 
