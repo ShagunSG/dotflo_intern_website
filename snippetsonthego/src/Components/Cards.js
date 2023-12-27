@@ -1,36 +1,84 @@
 import React from 'react';
 import logo from '../Images/logo.png'
 import '../App.css'
+import axios from 'axios';
 
-export default function Cards() {
-    return (
-        <div>
-            <div className="row row-cols-auto justify-content-center container-fluid">
-                <div className="card col-sm-3 mx-2">
-                    <img src={logo} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary">Go somewhere</a>
+class Cards extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            items: [],
+            isLoaded: false,
+        };
+    }
+
+    componentDidMount() {
+        axios.get('https://jsonplaceholder.typicode.com/users')
+            .then((res) => {
+                this.setState({
+                    items: res.data,
+                    isLoaded: true,
+                });
+            });
+    }
+    render() {
+        const { isLoaded, items } = this.state;
+        if (!isLoaded) {
+            return (
+                <div>Loading...</div>
+            );
+        }
+        else {
+            return (
+                <div>
+                    <div className="row row-cols-auto justify-content-center container-fluid">
+                        {items.map((item) => (
+                            <div className="card col-sm-3 mx-4 mb-4">
+                                <img src={logo} className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h5 className="card-title">{item.name}</h5>
+                                    <p className="card-text">{item.email}</p>
+                                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
-                <div className="card col-sm-3 mx-4">
-                    <img src={logo} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div className="card col-sm-3 mx-2">
-                    <img src={logo} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+            )
+        }
+    }
 }
+
+export default Cards;
+// export default function Cards() {
+//     return (
+//         <div>
+//             <div className="row row-cols-auto justify-content-center container-fluid">
+//                 <div className="card col-sm-3 mx-2">
+//                     <img src={logo} className="card-img-top" alt="..." />
+//                     <div className="card-body">
+//                         <h5 className="card-title">Card title</h5>
+//                         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+//                         <a href="#" className="btn btn-primary">Go somewhere</a>
+//                     </div>
+//                 </div>
+//                 <div className="card col-sm-3 mx-4">
+//                     <img src={logo} className="card-img-top" alt="..." />
+//                     <div className="card-body">
+//                         <h5 className="card-title">Card title</h5>
+//                         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+//                         <a href="#" className="btn btn-primary">Go somewhere</a>
+//                     </div>
+//                 </div>
+//                 <div className="card col-sm-3 mx-2">
+//                     <img src={logo} className="card-img-top" alt="..." />
+//                     <div className="card-body">
+//                         <h5 className="card-title">Card title</h5>
+//                         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+//                         <a href="#" className="btn btn-primary">Go somewhere</a>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     )
+// }
